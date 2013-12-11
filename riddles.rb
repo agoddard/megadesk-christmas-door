@@ -59,7 +59,7 @@ snowman2 = <<EOF
 EOF
 
 def get_riddle
-  riddle = File.open('riddles.txt').to_a.sample
+  riddle = File.open('riddles.txt').to_a.choice
   question,answer = riddle.split('?')
   {:question => question, :answer => answer.lstrip}
 end
@@ -99,7 +99,7 @@ while true do
     msg = "nope, #{attempt} is wrong, you should have said #{riddle[:answer]}"
     puts red(msg)
     insult = %w(idiot fool jerk douchebag)
-    `say "#{msg}. #{insult.sample}"`
+    `say "#{msg}. #{insult.choice}"`
     system('clear')
     puts red(fucking_snowman)
   end
