@@ -98,7 +98,7 @@ while true do
   else
     msg = "nope, #{attempt} is wrong, you should have said #{riddle[:answer]}"
     puts red(msg)
-    insult = %w(idiot fool jerk douchebag)
+    insult = ["Son of a nutcracker","Grinch","Scrooge head","Cottonheaded ninny muggins"]
     `say "#{msg}. #{insult.choice}"`
     system('clear')
     puts red(fucking_snowman)
