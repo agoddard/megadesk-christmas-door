@@ -233,7 +233,7 @@ while true do
   if attempt.downcase.gsub(' ','') == riddle[:answer].downcase.chomp.gsub(' ','')
     puts green("#{attempt} is right!")
     puts white(@won)
-    `say -v fiona "You Won! Please open the door to get your treat."`
+    `say "You Won! Please open the door to get your treat."`
     animate 20
   else
     msg = "nope, #{attempt} is wrong, you should have said #{riddle[:answer]}"
