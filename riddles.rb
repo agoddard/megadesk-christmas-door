@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 # -*- coding: utf-8 -*-
-snowman1 = <<EOF
+@snowman1 = <<EOF
                 .-------.
       *         | #     |    *
                 |_______|         *
@@ -17,8 +17,8 @@ snowman1 = <<EOF
     *    ///s/     (_)      .'          *
         // |/`.           .'
      __//    .-''-------'`-.
-      /|\  .'       _       `.      *
-     / | \:        (_)        :
+      /|\  .'        _       `.      *
+     / | \:         (_)        :
          :          _          :
          :         (_)         :
   *      :          _          :     *
@@ -29,7 +29,7 @@ snowman1 = <<EOF
                  `"""""'
 EOF
 
-snowman2 = <<EOF
+@snowman2 = <<EOF
                 .-------.
       *         | #     |    *
                 |_______|         *
@@ -46,8 +46,8 @@ snowman2 = <<EOF
     *    ///s/     (_)      .'  \\        *
         // |/`.           .'     \\
      __//    .-''-------'`-.      \\_
-      /|\  .'       _       `.      *
-     / | \:        (_)        :
+      /|\  .'        _       `.      *
+     / | \:         (_)        :
          :          _          :
          :         (_)         :
   *      :          _          :     *
@@ -94,7 +94,19 @@ def green(text)
 colorize(text, 32)
 end
 
-puts green(snowman1)
+def animate(duration)
+  duration.times do
+    system('clear')
+    puts green(@snowman1)
+    sleep 0.1
+    system('clear')
+    puts red(@snowman2)
+    sleep 0.1
+  end
+end
+
+
+puts green(@snowman1)
 while true do
   riddle = get_riddle
   puts green("#{riddle[:question]}?")
@@ -103,27 +115,13 @@ while true do
   if attempt.downcase.gsub(' ','') == riddle[:answer].downcase.chomp.gsub(' ','')
     puts green("#{attempt} is right!")
     `say "oh yeah"`
-    sleep 0.3
-    system('clear')
-    puts red(snowman1)
-    sleep 0.3
-    system('clear')
-    puts green(snowman2)
-    sleep 0.3
-    system('clear')
-    puts red(snowman1)
-    sleep 0.3
-    system('clear')
-    puts green(snowman2)
-    sleep 0.3
-    system('clear')
-    puts red(snowman1)
+    animate 10
   else
     msg = "nope, #{attempt} is wrong, you should have said #{riddle[:answer]}"
     puts red(msg)
     insult = ["Son of a nutcracker","Grinch","Scrooge head","Cottonheaded ninny muggins"]
     `say "#{msg}. #{insult.random}"`
     system('clear')
-    puts red(snowman1)
+    puts red(@snowman1)
   end
 end
