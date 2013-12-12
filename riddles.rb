@@ -1,62 +1,96 @@
 #!/usr/bin/env ruby
 # -*- coding: utf-8 -*-
 @snowman1 = <<EOF
+
                 .-------.
-      *         | #     |    *
-                |_______|         *
-               _|=======|_             *
-   *          [___________]
-               .'       `.   *   | /  
-              :   @   @   :     \|/_
-              :     <     :     //   
-     \~_s~-~s~s`._`...'_.'     //      *
-  *   `--~-~-~~s~/`"""'  `-.  //
-            /'/s/   _       `//
-           / /s/   (_)       /
-          ///s/     _        :  *
-    *    ///s/     (_)      .'          *
-        // |/`.           .'
-     __//    .-''-------'`-.
-      /|\  .'        _       `.      *
-     / | \:         (_)        :
-         :          _          :
-         :         (_)         :
-  *      :          _          :     *
-         :         (_)         :
-          :                   :
-  ""'"""'""`.               .'"'"""'""'""
- MegaDesk™   `-._       _.-'
-                 `"""""'
+      *         | #     |    *                     
+                |_______|         *                
+               _|=======|_             *           
+   *          [___________]                        
+               .'       `.   *   | /               
+              :   @   @   :     \|/_                
+              :     <     :     //                  
+     \~_s~-~s~s`._`...'_.'     //      *            
+  *   `--~-~-~~s~/`"""'  `-.  //                    
+            /'/s/   _       `//                    
+           / /s/   (_)       /                     
+          ///s/     _        :  *                  
+    *    ///s/     (_)      .'          *          
+        // |/`.           .'                       
+     __//    .-''-------'`-.                       
+      /|\  .'        _       `.      *             
+     / | \:         (_)        :                   
+         :          _          :                   
+         :         (_)         :                   
+  *      :          _          :     *             
+         :         (_)         :                   
+          :                   :                    
+  ""'"""'""`.               .'"'"""'""'""          
+ MegaDesk™   `-._       _.-'                       
+                 `"""""'                    
 EOF
 
-@snowman2 = <<EOF
-                .-------.
-      *         | #     |    *
-                |_______|         *
-               _|=======|_             *
-   *          [___________]
-               .'       `.   *   
-              :   @   @   :     
-              :     <     :     
-     \~_s~-~s~s`._`...'_.'           *
-  *   `--~-~-~~s~/`"""'  `-.  
-            /'/s/   _       `\\
-           / /s/   (_)       /\\
-          ///s/     _        : \\*
+@snowman2 = <<EOF                                                                                        
+                                                                                         
+                .-------.                  
+      *         | #     |    *             
+                |_______|         *        
+               _|=======|_             *   
+   *          [___________]                
+               .'       `.   *             
+              :   @   @   :                
+              :     <     :                
+     \~_s~-~s~s`._`...'_.'           *     
+  *   `--~-~-~~s~/`"""'  `-.               
+            /'/s/   _       `\\            
+           / /s/   (_)       /\\           
+          ///s/     _        : \\*         
     *    ///s/     (_)      .'  \\        *
-        // |/`.           .'     \\
-     __//    .-''-------'`-.      \\_
-      /|\  .'        _       `.      *
-     / | \:         (_)        :
-         :          _          :
-         :         (_)         :
-  *      :          _          :     *
-         :         (_)         :
-          :                   :
-  ""'"""'""`.               .'"'"""'""'""
- MegaDesk™   `-._       _.-'
-                 `"""""'
+        // |/`.           .'     \\        
+     __//    .-''-------'`-.      \\_      
+      /|\  .'        _       `.      *     
+     / | \:         (_)        :           
+         :          _          :           
+         :         (_)         :           
+  *      :          _          :     *     
+         :         (_)         :           
+          :                   :            
+  ""'"""'""`.               .'"'"""'""'""  
+ MegaDesk™   `-._       _.-'               
+                 `"""""'                   
 EOF
+
+
+@snowman3 = <<EOF                                                                                        
+                                                                                         
+                .-------.                  
+      *         | #     |    *             
+                |_______|         *        
+               _|=======|_             *   
+   *          [___________]                
+               .'       `.   *             
+              :   @   @   :                
+              :     <     :                
+     \~_s~-~s~s`._`...'_.'           *     
+  *   `--~-~-~~s~/`"""'  `-.               
+            /'/s/   _       `\\            
+           / /s/   (_)       /\\           
+          ///s/     _        : \\*         
+    *    ///s/     (_)      .'  \\        *
+        // |/`.           .'     \\        
+     __//    .-''-------'`-.      \\_      
+      /|\  .'        _       `.      *     
+     / | \:         (_)        :           
+         :          _          :           
+         :         (_)         :           
+  *      :          _          :     *     
+         :         (_)         :           
+          :                   :            
+  ""'"""'""`.               .'"'"""'""'""  
+ MegaDesk™   `-._       _.-'               
+                 `"""""'                   
+EOF
+
 
 class Array
   def random
@@ -90,6 +124,10 @@ def red(text)
   colorize(text, 31)
 end
 
+def white(text)
+  colorize(text, 37)
+end
+
 def green(text)
 colorize(text, 32)
 end
@@ -98,15 +136,20 @@ def animate(duration)
   duration.times do
     system('clear')
     puts green(@snowman1)
-    sleep 0.1
+    sleep 0.2
     system('clear')
     puts red(@snowman2)
-    sleep 0.1
+    sleep 0.2
+    system('clear')
+    puts red(@snowman3)
+    sleep 0.2
+    system('clear')
+    puts white(@snowman1)
   end
 end
 
 
-puts green(@snowman1)
+puts white(@snowman1)
 while true do
   riddle = get_riddle
   puts green("#{riddle[:question]}?")
@@ -115,13 +158,13 @@ while true do
   if attempt.downcase.gsub(' ','') == riddle[:answer].downcase.chomp.gsub(' ','')
     puts green("#{attempt} is right!")
     `say "oh yeah"`
-    animate 10
+    animate 20
   else
     msg = "nope, #{attempt} is wrong, you should have said #{riddle[:answer]}"
     puts red(msg)
     insult = ["Son of a nutcracker","Grinch","Scrooge head","Cottonheaded ninny muggins"]
     `say "#{msg}. #{insult.random}"`
     system('clear')
-    puts red(@snowman1)
+    puts white(@snowman1)
   end
 end
